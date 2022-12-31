@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, LegacyRef, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
@@ -193,7 +193,7 @@ const Card = ({ data }: { data: ImageIp }) => {
         Your <span className="text-[hsl(280,100%,70%)]">Business</span> Card
       </h1>
       {/* {console.log(data.logo)} */}
-      <div ref={exportRef} className="w-[800px] h-[400px] bg-black bg-gradient-to-r from-slate-600 to-slate-900 rounded-xl">
+      <div ref={exportRef as unknown as LegacyRef<HTMLDivElement>} className="w-[800px] h-[400px] bg-black bg-gradient-to-r from-slate-600 to-slate-900 rounded-xl">
         <header className="rounded-xl justify-center flex text-gray-300 items-center h-20 tracking-tighter font-bold text-4xl">
           <span className="ml-4">
             {data.businessName}
