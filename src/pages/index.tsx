@@ -22,7 +22,6 @@ type Inputs = {
 type ImageIp = Inputs & { logo?: any }
 
 const Home: NextPage = () => {
-  const router = useRouter();
   // const [email, setEmail] = useState(window.localStorage.getItem("emailForSignIn") || "");
   const filePickerRef = useRef<HTMLInputElement>(null);
   const [selectedFile, setSelectedFile] = useState<any>("");
@@ -41,7 +40,7 @@ const Home: NextPage = () => {
     }
     setLoading(true);
 
-    let toSendData: ImageIp = {
+    const toSendData: ImageIp = {
       name: data.name,
       email: data.email,
       phoneNumber: data.phoneNumber,
