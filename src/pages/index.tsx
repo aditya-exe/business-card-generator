@@ -8,7 +8,6 @@ import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../firebase/firebase.config";
 import { exportAsImage } from "../utils/exportAsImage";
 
-
 type Inputs = {
   name: string,
   email: string,
@@ -22,6 +21,7 @@ type Inputs = {
 type ImageIp = Inputs & { logo?: any }
 
 const Home: NextPage = () => {
+  const router = useRouter();
   // const [email, setEmail] = useState(window.localStorage.getItem("emailForSignIn") || "");
   const filePickerRef = useRef<HTMLInputElement>(null);
   const [selectedFile, setSelectedFile] = useState<any>("");
@@ -76,12 +76,11 @@ const Home: NextPage = () => {
         toSendData.logo = selectedFile;
       }
     }
-
     setCardData(toSendData);
     setSelectedFile("");
     setLoading(false);
-    // router.push(`/card/${docRef.id}`);
-    setSent(true);
+    // setSent(true);
+    router.push(`/card/${docRef.id}`);
   }
 
   const addImageToPost = (e: ChangeEvent<HTMLInputElement>) => {
@@ -217,7 +216,7 @@ const Card = ({ data }: { data: ImageIp }) => {
       </div>
       <div className="flex gap-4">
         <button className="p-2 bg-purple-600 rounded-xl font-bold tracking-tighter" onClick={() => exportAsImage(exportRef.current, "test", "download")}>Download!</button>
-        <button className="p-2 bg-purple-600 rounded-xl font-bold tracking-tighter" onClick={() => exportAsImage(exportRef.current, "test", "share")}>Share on whatsapp</button>
+        {/* <button className="p-2 bg-purple-600 rounded-xl font-bold trackingw-tighter" onClick={() => exportAsImage(exportRef.current, "test", "share")}>Share on whatsapp</button> */}
       </div>
     </div>
   );
