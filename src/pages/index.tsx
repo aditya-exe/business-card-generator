@@ -79,8 +79,8 @@ const Home: NextPage = () => {
     setCardData(toSendData);
     setSelectedFile("");
     setLoading(false);
-    // setSent(true);
-    router.push(`/card/${docRef.id}`);
+    setSent(true);
+    // router.push(`/card/${docRef.id}`);
   }
 
   const addImageToPost = (e: ChangeEvent<HTMLInputElement>) => {
